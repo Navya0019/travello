@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form action="register" method="post">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="First Name"><br>
+            <input type="text" name="last_name" placeholder="Last Name"><br>
+            <input type="text" name="username" placeholder="User Name"><br>
+            <input type="email" name="email" placeholder="Email"><br>
+            <input type="password" name="password1" placeholder="Password"><br>
+            <input type="password" name="password2" placeholder="Confirm Password"><br>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    {% if messages %}
+    <div id="message-container" class="message-container">
+        {% for message in messages %}
+        <h3>{{ message }}</h3>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <style>
+        .form-container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .message-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%; /* Ensure it is the same width as the form */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            max-width: 300px; /* Limit the width to match the form */
+            margin-left: auto; /* Center the message container */
+            margin-right: auto; /* Center the message container */
+        }
+    </style>
+</body>
+</html>
